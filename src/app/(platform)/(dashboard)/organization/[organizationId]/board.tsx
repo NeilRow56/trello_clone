@@ -1,19 +1,19 @@
 import { deleteBoard } from '@/actions/delete-board'
+import { FormDelete } from '@/components/form/form-delete'
 import { Button } from '@/components/ui/button'
 
-type BoardProps = {
+interface BoardProps {
   title: string
   id: string
 }
 
 export const Board = ({ title, id }: BoardProps) => {
   const deleteBoardWithId = deleteBoard.bind(null, id)
+
   return (
-    <form action={deleteBoardWithId} className="flex items-center gap-2">
-      <p>Board name:{title}</p>
-      <Button type="submit" variant="destructive" size="sm">
-        Delete
-      </Button>
+    <form action={deleteBoardWithId} className="flex items-center gap-x-2">
+      <p>Board title: {title}</p>
+      <FormDelete />
     </form>
   )
 }
